@@ -9,6 +9,25 @@
 */
 
 const colors = ['blue', 'red', 'green', 'black', 'grey', 'orange', 'purple'];
+const section =  document.getElementById('exo1');
+document.body;
+
+const maDiv = document.createElement('div');
+
+colors.forEach(function(color){
+    const div = document.createElement('div'); 
+    section.appendChild(div)
+
+    div.textContent = color
+    div.style.backgroundColor = color
+
+    div.addEventListener(
+        'click',
+        function () {
+          console.log("Couleur: ",color);
+        },
+    );
+})
 
 // -------------------------------
 
@@ -18,6 +37,24 @@ const colors = ['blue', 'red', 'green', 'black', 'grey', 'orange', 'purple'];
     - Lui ajouter un listener au mousemove, qui change sa hauteur/largeur
     en fonction de la position de la souris à l'écran (event.clientX, event.clientY)
 */
+const exo2 = document.createElement('section');
+exo2.id = "exo2";
+document.body.append(exo2);
+
+const divExo2 = document.createElement('div');
+divExo2.id = "exo-2";
+exo2.appendChild(divExo2);
+
+document.addEventListener("mousemove",function(changeSize){
+    let sizeX = changeSize.clientX;
+    let sizeY = changeSize.clientY;
+    console.log("sizeX:",sizeX,"sizeY:",sizeY);
+
+    divExo2.style.width = 100 + sizeX + "px";
+    divExo2.style.height = 100 + sizeY + "px";
+    },
+)
+divExo2.classList.add('exo2')
 
 // -------------------------------
 
@@ -27,8 +64,20 @@ const colors = ['blue', 'red', 'green', 'black', 'grey', 'orange', 'purple'];
     - Ajouter un listener qui, au click, choisit un nom au hasard
     puis remplace la <div> cliquée par une nouvelle <div>, avec le nouveau nom
 */
-
 const names = ['Harry', 'Hermione', 'Ron', 'Sirius', 'Hagrid', 'Albus'];
+
+const exo3 = document.createElement('section');
+exo3.id = 'exo3';
+document.body.append(exo3);
+
+let div = document.createElement('div');
+div.textContent = names[0];
+exo3.append(div);
+
+exo3.addEventListener('click', function(){
+    let rand = Math.floor(Math.random()*names.length);
+    div.textContent = names[rand];
+});
 
 // -------------------------------
 
@@ -38,6 +87,36 @@ const names = ['Harry', 'Hermione', 'Ron', 'Sirius', 'Hagrid', 'Albus'];
     - Lui ajouter un listener qui active/désactive le tracking
     de la position de la souris dans la fenêtre (event.clientX, event.clientY)
 */
+
+let exo4 = document.createElement('section');
+exo4.id = "exo4";
+document.body.append(exo4);
+
+let button = document.createElement('button')
+let textbu = document.createTextNode("track");
+button.appendChild(textbu)
+exo4.appendChild(button);
+let isActive = false
+
+function coord(event){
+    let coordX = event.clientX
+    let coordY = event.clientY
+    console.log("X:",coordX,"Y:",coordY)
+}
+
+button.addEventListener('click',function(){
+   isActive = !isActive
+   console.log(isActive)
+   if (isActive == true){
+    document.addEventListener("mousemove",coord,true);
+   }
+   if (isActive == false){
+    document.removeEventListener("mousemove",coord,true);
+   }
+},
+)
+
+
 
 // -------------------------------
 
