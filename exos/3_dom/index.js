@@ -10,7 +10,6 @@
 
 const colors = ['blue', 'red', 'green', 'black', 'grey', 'orange', 'purple'];
 const section =  document.getElementById('exo1');
-document.body;
 
 const maDiv = document.createElement('div');
 
@@ -108,10 +107,10 @@ button.addEventListener('click',function(){
    isActive = !isActive
    console.log(isActive)
    if (isActive == true){
-    document.addEventListener("mousemove",coord,true);
+    document.addEventListener("mousemove",coord);
    }
    if (isActive == false){
-    document.removeEventListener("mousemove",coord,true);
+    document.removeEventListener("mousemove",coord);
    }
 },
 )
